@@ -15,7 +15,9 @@ TARGETVER	:= $(TARGET).1.0
 LDFLAGS	:= -shared
 
 LIBINCLUDE	:= ../../../include/
-LIBDIR	:= ../../../lib/linux/
+LIBDIR		:= ../../../lib/linux/
+LIBDIRABS	:= `pwd`/$(LIBDIR)
+
 
 all: $(TARGETVER)
 
@@ -28,8 +30,8 @@ $(TARGETVER): $(OBJECTS)
 install:
 	cp $(HEADERS) $(LIBINCLUDE)
 	mv $(TARGETVER) $(LIBDIR)
-	ln -sf $(LIBDIR)$(TARGETVER) $(LIBDIR)$(TARGET).1
-	ln -sf $(LIBDIR)$(TARGET).1 $(LIBDIR)$(TARGET)
+	ln -sf $(LIBDIRABS)$(TARGETVER) $(LIBDIRABS)$(TARGET).1
+	ln -sf $(LIBDIRABS)$(TARGET).1 $(LIBDIRABS)$(TARGET)
 	@echo " - Done."
 	@echo "Please ensure that the environment variable, LD_LIBRARY_PATH, contains $(LIBDIR)\n"
 
