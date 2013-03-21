@@ -32,6 +32,8 @@ install:
 	mv $(TARGETVER) $(LIBDIR)
 	ln -sf $(LIBDIRABS)$(TARGETVER) $(LIBDIRABS)$(TARGET).1
 	ln -sf $(LIBDIRABS)$(TARGET).1 $(LIBDIRABS)$(TARGET)
+	echo $(LIBDIRABS) >> /etc/ld.so.conf
+	ldconfig
 	@echo " - Done."
 	@echo "Please ensure that the environment variable, LD_LIBRARY_PATH, contains $(LIBDIR)\n"
 
